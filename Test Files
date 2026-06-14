@@ -1,1 +1,350 @@
-
+0 NOTE Mikkail Allen
+0 HEAD
+1 SOUR Family Echo
+2 WWW https://www.familyecho.com/
+1 FILE My Family
+1 DATE 7 JUN 2026
+1 DEST ANSTFILE
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 SUBM @I1@
+2 NAME username
+1 SUBN
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Edward /Stockman/
+2 GIVN Edward
+2 SURN Stockman
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1930
+1 DEAT Y
+2 DATE 29 SEP 1970
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Elise /Stockman/
+2 GIVN Elise
+2 SURN Stockman
+1 SEX F
+1 BIRT
+2 DATE 8 JUL 1933
+1 DEAT Y
+2 DATE 30 SEP 1970
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Jack /Stockman/
+2 GIVN Jack
+2 SURN Stockman
+1 SEX M
+1 BIRT
+2 DATE 17 JAN 1965
+1 FAMS @F2@
+1 FAMC @F1@
+2 PEDI birth
+0 @I4@ INDI
+1 NAME Alice /Stockman/
+2 GIVN Alice
+2 SURN Stockman
+1 SEX F
+1 BIRT
+2 DATE 25 APR 1997
+1 FAMS @F3@
+0 @I5@ INDI
+1 NAME Carmen /Stockman/
+2 GIVN Carmen
+2 SURN Stockman
+1 SEX F
+1 BIRT
+2 DATE 23 FEB 1960
+1 FAMS @F2@
+0 @I6@ INDI
+1 NAME Lisa /Alexander/
+2 GIVN Lisa
+2 SURN Alexander
+1 SEX F
+1 BIRT
+2 DATE 29 JAN 1998
+1 FAMS @F4@
+0 @I7@ INDI
+1 NAME Jim /Stockman/
+2 GIVN Jim
+2 SURN Stockman
+1 SEX M
+1 BIRT
+2 DATE 30 MAY 1995
+1 FAMS @F3@
+1 FAMS @F4@
+1 FAMC @F2@
+0 @I8@ INDI
+1 NAME Bridget /Stockman/
+2 GIVN Bridget
+2 SURN Stockman
+1 SEX F
+1 BIRT
+2 DATE 30 MAY 1995
+0 @I9@ INDI
+1 NAME Lily /Stockman II/
+2 GIVN Lily
+2 SURN Stockman II
+1 SEX F
+1 BIRT
+2 DATE 30 MAY 1995
+1 FAMS @F5@
+1 FAMC @F2@
+0 @I10@ INDI
+1 NAME Lockhart /Stockman/
+2 GIVN Lockhart
+2 SURN Stockman
+1 SEX M
+1 BIRT
+2 DATE 30 APR 1963
+1 FAMS @F6@
+1 FAMC @F1@
+0 @I11@ INDI
+1 NAME Taylor /Stockman/
+2 GIVN Taylor
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX F
+1 BIRT
+2 DATE 29 SEP 1963
+1 FAMS @F6@
+0 @I12@ INDI
+1 NAME Lily /Stockman/
+2 GIVN Lily
+2 SURN Stockman
+1 SEX F
+1 BIRT
+2 DATE 30 APR 1963
+1 FAMS @F7@
+1 FAMS @F8@
+1 FAMC @F1@
+0 @I13@ INDI
+1 NAME Hannah /Stockman/
+2 GIVN Hannah
+2 SURN Stockman
+1 SEX F
+1 BIRT
+2 DATE 27 FEB 1962
+1 DEAT Y
+2 DATE 14 OCT 1981
+1 FAMC @F1@
+0 @I14@ INDI
+1 NAME James /Stockman/
+2 GIVN James
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX M
+1 BIRT
+2 DATE 20 JUN 1959
+1 DEAT Y
+2 DATE 9 JAN 2010
+1 FAMS @F8@
+0 @I15@ INDI
+1 NAME Zack /Stockman/
+2 GIVN Zack
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX M
+1 BIRT
+2 DATE 2 DEC 1960
+1 FAMS @F7@
+0 @I16@ INDI
+1 NAME Alexander /Stockman/
+2 GIVN Alexander
+2 SURN Stockman
+1 SEX M
+1 BIRT
+2 DATE 21 NOV 1996
+1 FAMC @F8@
+0 @I17@ INDI
+1 NAME Alexandria /Stockman/
+2 GIVN Alexandria
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX F
+1 BIRT
+2 DATE 21 NOV 1996
+1 FAMC @F8@
+0 @I18@ INDI
+1 NAME Mark /Stockman/
+2 GIVN Mark
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX M
+1 BIRT
+2 DATE 24 JUN 1992
+1 FAMS @F5@
+0 @I19@ INDI
+1 NAME Bridget /Stockman/
+2 GIVN Bridget
+2 SURN Stockman
+1 SEX F
+1 BIRT
+2 DATE 30 MAY 1995
+1 FAMC @F2@
+0 @I20@ INDI
+1 NAME Luke /Stockman/
+2 GIVN Luke
+2 SURN Stockman
+1 SEX M
+1 BIRT
+2 DATE 4 MAR 2018
+1 FAMC @F5@
+0 @I21@ INDI
+1 NAME Martha /Stockman/
+2 GIVN Martha
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX F
+1 BIRT
+2 DATE 8 JUL 2022
+1 FAMC @F5@
+0 @I22@ INDI
+1 NAME Jack /Stockman II/
+2 GIVN Jack
+2 SURN Stockman II
+1 SEX M
+1 BIRT
+2 DATE 20 JUL 1997
+1 FAMS @F9@
+1 FAMC @F6@
+0 @I23@ INDI
+1 NAME Selina /Stockman/
+2 GIVN Selina
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX F
+1 BIRT
+2 DATE 25 AUG 1997
+1 FAMS @F9@
+0 @I24@ INDI
+1 NAME Angela /Stockman/
+2 GIVN Angela
+2 SURN Stockman
+1 SEX F
+1 BIRT
+2 DATE 20 DEC 2024
+1 FAMC @F9@
+0 @I25@ INDI
+1 NAME Edward /Stockman II/
+2 GIVN Edward
+2 SURN Stockman II
+2 _MARNM Stockman II
+1 SEX M
+1 BIRT
+2 DATE 20 DEC 2024
+1 FAMC @F9@
+0 @I26@ INDI
+1 NAME Elise /Stockman II/
+2 GIVN Elise
+2 SURN Stockman II
+2 _MARNM Stockman II
+1 SEX F
+1 BIRT
+2 DATE 4 DEC 1999
+1 FAMS @F10@
+1 FAMC @F7@
+0 @I27@ INDI
+1 NAME Cody /Stockman/
+2 GIVN Cody
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX M
+1 BIRT
+2 DATE 21 JAN 1997
+1 FAMS @F10@
+0 @I28@ INDI
+1 NAME Chris /Stockman/
+2 GIVN Chris
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX M
+1 BIRT
+2 DATE 9 AUG 2020
+1 FAMC @F10@
+0 @I29@ INDI
+1 NAME Maxwell /Stockman/
+2 GIVN Maxwell
+2 SURN Stockman
+2 _MARNM Stockman
+1 SEX M
+1 BIRT
+2 DATE 30 JAN 2025
+1 FAMC @F10@
+2 PEDI adopted
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I10@
+1 CHIL @I12@
+1 CHIL @I13@
+1 MARR
+2 DATE 1 SEP 1960
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I5@
+1 CHIL @I7@
+1 CHIL @I9@
+1 CHIL @I19@
+1 MARR
+2 DATE 20 FEB 1990
+1 DIV
+2 DATE 28 SEP 1997
+1 _CURRENT N
+1 _PRIMARY N
+0 @F3@ FAM
+1 HUSB @I7@
+1 WIFE @I4@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F4@ FAM
+1 HUSB @I7@
+1 WIFE @I6@
+1 _CURRENT N
+1 _PRIMARY N
+0 @F5@ FAM
+1 HUSB @I18@
+1 WIFE @I9@
+1 CHIL @I20@
+1 CHIL @I21@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F6@ FAM
+1 HUSB @I10@
+1 WIFE @I11@
+1 CHIL @I22@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F7@ FAM
+1 HUSB @I15@
+1 WIFE @I12@
+1 CHIL @I26@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F8@ FAM
+1 HUSB @I14@
+1 WIFE @I12@
+1 CHIL @I16@
+1 CHIL @I17@
+1 _CURRENT N
+1 _PRIMARY N
+0 @F9@ FAM
+1 HUSB @I22@
+1 WIFE @I23@
+1 CHIL @I24@
+1 CHIL @I25@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F10@ FAM
+1 HUSB @I27@
+1 WIFE @I26@
+1 CHIL @I28@
+1 CHIL @I29@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 TRLR
