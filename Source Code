@@ -1,1 +1,84 @@
+# https://github.com/edwincazares/cs555-teamC-gedcom-project
 
+tags = {
+    "INDI", "NAME", "SEX", "BIRT", "DEAT",
+    "FAMC", "FAMS", "FAM", "MARR", "HUSB",
+    "WIFE", "CHIL", "DIV", "DATE", "HEAD",
+    "TRLR", "NOTE"
+}
+
+# Storage for individual and family information
+individuals = {}
+families = {}
+
+INDI = None
+FAM = None
+
+# Open the file
+with open("My-Family-7-Jun-2026-023209703.ged", "r") as f:
+    for line in f:
+        line = line.strip()
+
+        if line == "":
+            continue
+
+        fields = line.split()
+        level = fields[0]
+
+        if level == "0" and len(fields) >= 3 and fields[2] in ("INDI", "FAM"):
+            tag = fields[2]
+            arguments = fields[1]
+        else:
+            tag = fields[1]
+            arguments = " ".join(fields[2:])
+
+        if tag in tags:
+            valid = "Y"
+        else:
+            valid = "N"
+
+        print("--> " + line)
+        print(f"<-- {level}|{tag}|{valid}|{arguments}")
+
+        # Collect information
+        if tag == "INDI":
+            INDI = arguments
+            FAM = None
+            if INDI not in individuals:
+                individuals[INDI] = ""
+                
+        elif tag == "NAME" and INDI:
+            individuals[INDI] = arguments
+
+        elif tag == "FAM":
+            FAM = arguments
+            INDI = None
+            families[FAM] = {"HUSB": "", "WIFE": "", "CHIL": []}
+        elif tag == "HUSB" and FAM:
+            families[FAM]["HUSB"] = arguments
+        elif tag == "WIFE" and FAM:
+            families[FAM]["WIFE"] = arguments
+        elif tag == "CHIL" and FAM:
+            families[FAM]["CHIL"].append(arguments)
+
+# Print everything
+print("\nINDIVIDUALS")
+for INDI_id in sorted(individuals):
+    print(f"{INDI_id}: {individuals[INDI_id]}")
+
+
+print("\nFAMILIES")
+for FAM_id in sorted(families):
+    HUSB_id = families[FAM_id]["HUSB"]
+    WIFE_id = families[FAM_id]["WIFE"]
+    HUSB_name = individuals.get(HUSB_id, "Not Found")
+    WIFE_name = individuals.get(WIFE_id, "Not Found")
+
+    print(f"{FAM_id}:")
+    print(f"  Husband: {HUSB_id} {HUSB_name}")
+    print(f"  Wife: {WIFE_id} {WIFE_name}")
+    
+print("  Children:")
+for CHIL_id in families[FAM_id]["CHIL"]:
+    CHIL_name = individuals.get(CHIL_id, "Not Found")
+    print(f"    {CHIL_id} {CHIL_name}")
