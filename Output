@@ -1,1 +1,766 @@
+--> 0 NOTE Mikkail Allen
+<-- 0|NOTE|Y|Mikkail Allen
+--> 0 HEAD
+<-- 0|HEAD|Y|
+--> 1 SOUR Family Echo
+<-- 1|SOUR|N|Family Echo
+--> 2 WWW https://www.familyecho.com/
+<-- 2|WWW|N|https://www.familyecho.com/
+--> 1 FILE My Family
+<-- 1|FILE|N|My Family
+--> 1 DATE 7 JUN 2026
+<-- 1|DATE|Y|7 JUN 2026
+--> 1 DEST ANSTFILE
+<-- 1|DEST|N|ANSTFILE
+--> 1 GEDC
+<-- 1|GEDC|N|
+--> 2 VERS 5.5.1
+<-- 2|VERS|N|5.5.1
+--> 2 FORM LINEAGE-LINKED
+<-- 2|FORM|N|LINEAGE-LINKED
+--> 1 SUBM @I1@
+<-- 1|SUBM|N|@I1@
+--> 2 NAME username
+<-- 2|NAME|Y|username
+--> 1 SUBN
+<-- 1|SUBN|N|
+--> 1 CHAR UTF-8
+<-- 1|CHAR|N|UTF-8
+--> 0 @I1@ INDI
+<-- 0|INDI|Y|@I1@
+--> 1 NAME Edward /Stockman/
+<-- 1|NAME|Y|Edward /Stockman/
+--> 2 GIVN Edward
+<-- 2|GIVN|N|Edward
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 1 JAN 1930
+<-- 2|DATE|Y|1 JAN 1930
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+--> 2 DATE 29 SEP 1970
+<-- 2|DATE|Y|29 SEP 1970
+--> 1 FAMS @F1@
+<-- 1|FAMS|Y|@F1@
+--> 0 @I2@ INDI
+<-- 0|INDI|Y|@I2@
+--> 1 NAME Elise /Stockman/
+<-- 1|NAME|Y|Elise /Stockman/
+--> 2 GIVN Elise
+<-- 2|GIVN|N|Elise
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 8 JUL 1933
+<-- 2|DATE|Y|8 JUL 1933
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+--> 2 DATE 30 SEP 1970
+<-- 2|DATE|Y|30 SEP 1970
+--> 1 FAMS @F1@
+<-- 1|FAMS|Y|@F1@
+--> 0 @I3@ INDI
+<-- 0|INDI|Y|@I3@
+--> 1 NAME Jack /Stockman/
+<-- 1|NAME|Y|Jack /Stockman/
+--> 2 GIVN Jack
+<-- 2|GIVN|N|Jack
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 17 JAN 1965
+<-- 2|DATE|Y|17 JAN 1965
+--> 1 FAMS @F2@
+<-- 1|FAMS|Y|@F2@
+--> 1 FAMC @F1@
+<-- 1|FAMC|Y|@F1@
+--> 2 PEDI birth
+<-- 2|PEDI|N|birth
+--> 0 @I4@ INDI
+<-- 0|INDI|Y|@I4@
+--> 1 NAME Alice /Stockman/
+<-- 1|NAME|Y|Alice /Stockman/
+--> 2 GIVN Alice
+<-- 2|GIVN|N|Alice
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 25 APR 1997
+<-- 2|DATE|Y|25 APR 1997
+--> 1 FAMS @F3@
+<-- 1|FAMS|Y|@F3@
+--> 0 @I5@ INDI
+<-- 0|INDI|Y|@I5@
+--> 1 NAME Carmen /Stockman/
+<-- 1|NAME|Y|Carmen /Stockman/
+--> 2 GIVN Carmen
+<-- 2|GIVN|N|Carmen
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 23 FEB 1960
+<-- 2|DATE|Y|23 FEB 1960
+--> 1 FAMS @F2@
+<-- 1|FAMS|Y|@F2@
+--> 0 @I6@ INDI
+<-- 0|INDI|Y|@I6@
+--> 1 NAME Lisa /Alexander/
+<-- 1|NAME|Y|Lisa /Alexander/
+--> 2 GIVN Lisa
+<-- 2|GIVN|N|Lisa
+--> 2 SURN Alexander
+<-- 2|SURN|N|Alexander
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 29 JAN 1998
+<-- 2|DATE|Y|29 JAN 1998
+--> 1 FAMS @F4@
+<-- 1|FAMS|Y|@F4@
+--> 0 @I7@ INDI
+<-- 0|INDI|Y|@I7@
+--> 1 NAME Jim /Stockman/
+<-- 1|NAME|Y|Jim /Stockman/
+--> 2 GIVN Jim
+<-- 2|GIVN|N|Jim
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 30 MAY 1995
+<-- 2|DATE|Y|30 MAY 1995
+--> 1 FAMS @F3@
+<-- 1|FAMS|Y|@F3@
+--> 1 FAMS @F4@
+<-- 1|FAMS|Y|@F4@
+--> 1 FAMC @F2@
+<-- 1|FAMC|Y|@F2@
+--> 0 @I8@ INDI
+<-- 0|INDI|Y|@I8@
+--> 1 NAME Bridget /Stockman/
+<-- 1|NAME|Y|Bridget /Stockman/
+--> 2 GIVN Bridget
+<-- 2|GIVN|N|Bridget
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 30 MAY 1995
+<-- 2|DATE|Y|30 MAY 1995
+--> 0 @I9@ INDI
+<-- 0|INDI|Y|@I9@
+--> 1 NAME Lily /Stockman II/
+<-- 1|NAME|Y|Lily /Stockman II/
+--> 2 GIVN Lily
+<-- 2|GIVN|N|Lily
+--> 2 SURN Stockman II
+<-- 2|SURN|N|Stockman II
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 30 MAY 1995
+<-- 2|DATE|Y|30 MAY 1995
+--> 1 FAMS @F5@
+<-- 1|FAMS|Y|@F5@
+--> 1 FAMC @F2@
+<-- 1|FAMC|Y|@F2@
+--> 0 @I10@ INDI
+<-- 0|INDI|Y|@I10@
+--> 1 NAME Lockhart /Stockman/
+<-- 1|NAME|Y|Lockhart /Stockman/
+--> 2 GIVN Lockhart
+<-- 2|GIVN|N|Lockhart
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 30 APR 1963
+<-- 2|DATE|Y|30 APR 1963
+--> 1 FAMS @F6@
+<-- 1|FAMS|Y|@F6@
+--> 1 FAMC @F1@
+<-- 1|FAMC|Y|@F1@
+--> 0 @I11@ INDI
+<-- 0|INDI|Y|@I11@
+--> 1 NAME Taylor /Stockman/
+<-- 1|NAME|Y|Taylor /Stockman/
+--> 2 GIVN Taylor
+<-- 2|GIVN|N|Taylor
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 29 SEP 1963
+<-- 2|DATE|Y|29 SEP 1963
+--> 1 FAMS @F6@
+<-- 1|FAMS|Y|@F6@
+--> 0 @I12@ INDI
+<-- 0|INDI|Y|@I12@
+--> 1 NAME Lily /Stockman/
+<-- 1|NAME|Y|Lily /Stockman/
+--> 2 GIVN Lily
+<-- 2|GIVN|N|Lily
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 30 APR 1963
+<-- 2|DATE|Y|30 APR 1963
+--> 1 FAMS @F7@
+<-- 1|FAMS|Y|@F7@
+--> 1 FAMS @F8@
+<-- 1|FAMS|Y|@F8@
+--> 1 FAMC @F1@
+<-- 1|FAMC|Y|@F1@
+--> 0 @I13@ INDI
+<-- 0|INDI|Y|@I13@
+--> 1 NAME Hannah /Stockman/
+<-- 1|NAME|Y|Hannah /Stockman/
+--> 2 GIVN Hannah
+<-- 2|GIVN|N|Hannah
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 27 FEB 1962
+<-- 2|DATE|Y|27 FEB 1962
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+--> 2 DATE 14 OCT 1981
+<-- 2|DATE|Y|14 OCT 1981
+--> 1 FAMC @F1@
+<-- 1|FAMC|Y|@F1@
+--> 0 @I14@ INDI
+<-- 0|INDI|Y|@I14@
+--> 1 NAME James /Stockman/
+<-- 1|NAME|Y|James /Stockman/
+--> 2 GIVN James
+<-- 2|GIVN|N|James
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 20 JUN 1959
+<-- 2|DATE|Y|20 JUN 1959
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+--> 2 DATE 9 JAN 2010
+<-- 2|DATE|Y|9 JAN 2010
+--> 1 FAMS @F8@
+<-- 1|FAMS|Y|@F8@
+--> 0 @I15@ INDI
+<-- 0|INDI|Y|@I15@
+--> 1 NAME Zack /Stockman/
+<-- 1|NAME|Y|Zack /Stockman/
+--> 2 GIVN Zack
+<-- 2|GIVN|N|Zack
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 2 DEC 1960
+<-- 2|DATE|Y|2 DEC 1960
+--> 1 FAMS @F7@
+<-- 1|FAMS|Y|@F7@
+--> 0 @I16@ INDI
+<-- 0|INDI|Y|@I16@
+--> 1 NAME Alexander /Stockman/
+<-- 1|NAME|Y|Alexander /Stockman/
+--> 2 GIVN Alexander
+<-- 2|GIVN|N|Alexander
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 21 NOV 1996
+<-- 2|DATE|Y|21 NOV 1996
+--> 1 FAMC @F8@
+<-- 1|FAMC|Y|@F8@
+--> 0 @I17@ INDI
+<-- 0|INDI|Y|@I17@
+--> 1 NAME Alexandria /Stockman/
+<-- 1|NAME|Y|Alexandria /Stockman/
+--> 2 GIVN Alexandria
+<-- 2|GIVN|N|Alexandria
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 21 NOV 1996
+<-- 2|DATE|Y|21 NOV 1996
+--> 1 FAMC @F8@
+<-- 1|FAMC|Y|@F8@
+--> 0 @I18@ INDI
+<-- 0|INDI|Y|@I18@
+--> 1 NAME Mark /Stockman/
+<-- 1|NAME|Y|Mark /Stockman/
+--> 2 GIVN Mark
+<-- 2|GIVN|N|Mark
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 24 JUN 1992
+<-- 2|DATE|Y|24 JUN 1992
+--> 1 FAMS @F5@
+<-- 1|FAMS|Y|@F5@
+--> 0 @I19@ INDI
+<-- 0|INDI|Y|@I19@
+--> 1 NAME Bridget /Stockman/
+<-- 1|NAME|Y|Bridget /Stockman/
+--> 2 GIVN Bridget
+<-- 2|GIVN|N|Bridget
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 30 MAY 1995
+<-- 2|DATE|Y|30 MAY 1995
+--> 1 FAMC @F2@
+<-- 1|FAMC|Y|@F2@
+--> 0 @I20@ INDI
+<-- 0|INDI|Y|@I20@
+--> 1 NAME Luke /Stockman/
+<-- 1|NAME|Y|Luke /Stockman/
+--> 2 GIVN Luke
+<-- 2|GIVN|N|Luke
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 4 MAR 2018
+<-- 2|DATE|Y|4 MAR 2018
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+--> 0 @I21@ INDI
+<-- 0|INDI|Y|@I21@
+--> 1 NAME Martha /Stockman/
+<-- 1|NAME|Y|Martha /Stockman/
+--> 2 GIVN Martha
+<-- 2|GIVN|N|Martha
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 8 JUL 2022
+<-- 2|DATE|Y|8 JUL 2022
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+--> 0 @I22@ INDI
+<-- 0|INDI|Y|@I22@
+--> 1 NAME Jack /Stockman II/
+<-- 1|NAME|Y|Jack /Stockman II/
+--> 2 GIVN Jack
+<-- 2|GIVN|N|Jack
+--> 2 SURN Stockman II
+<-- 2|SURN|N|Stockman II
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 20 JUL 1997
+<-- 2|DATE|Y|20 JUL 1997
+--> 1 FAMS @F9@
+<-- 1|FAMS|Y|@F9@
+--> 1 FAMC @F6@
+<-- 1|FAMC|Y|@F6@
+--> 0 @I23@ INDI
+<-- 0|INDI|Y|@I23@
+--> 1 NAME Selina /Stockman/
+<-- 1|NAME|Y|Selina /Stockman/
+--> 2 GIVN Selina
+<-- 2|GIVN|N|Selina
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 25 AUG 1997
+<-- 2|DATE|Y|25 AUG 1997
+--> 1 FAMS @F9@
+<-- 1|FAMS|Y|@F9@
+--> 0 @I24@ INDI
+<-- 0|INDI|Y|@I24@
+--> 1 NAME Angela /Stockman/
+<-- 1|NAME|Y|Angela /Stockman/
+--> 2 GIVN Angela
+<-- 2|GIVN|N|Angela
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 20 DEC 2024
+<-- 2|DATE|Y|20 DEC 2024
+--> 1 FAMC @F9@
+<-- 1|FAMC|Y|@F9@
+--> 0 @I25@ INDI
+<-- 0|INDI|Y|@I25@
+--> 1 NAME Edward /Stockman II/
+<-- 1|NAME|Y|Edward /Stockman II/
+--> 2 GIVN Edward
+<-- 2|GIVN|N|Edward
+--> 2 SURN Stockman II
+<-- 2|SURN|N|Stockman II
+--> 2 _MARNM Stockman II
+<-- 2|_MARNM|N|Stockman II
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 20 DEC 2024
+<-- 2|DATE|Y|20 DEC 2024
+--> 1 FAMC @F9@
+<-- 1|FAMC|Y|@F9@
+--> 0 @I26@ INDI
+<-- 0|INDI|Y|@I26@
+--> 1 NAME Elise /Stockman II/
+<-- 1|NAME|Y|Elise /Stockman II/
+--> 2 GIVN Elise
+<-- 2|GIVN|N|Elise
+--> 2 SURN Stockman II
+<-- 2|SURN|N|Stockman II
+--> 2 _MARNM Stockman II
+<-- 2|_MARNM|N|Stockman II
+--> 1 SEX F
+<-- 1|SEX|Y|F
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 4 DEC 1999
+<-- 2|DATE|Y|4 DEC 1999
+--> 1 FAMS @F10@
+<-- 1|FAMS|Y|@F10@
+--> 1 FAMC @F7@
+<-- 1|FAMC|Y|@F7@
+--> 0 @I27@ INDI
+<-- 0|INDI|Y|@I27@
+--> 1 NAME Cody /Stockman/
+<-- 1|NAME|Y|Cody /Stockman/
+--> 2 GIVN Cody
+<-- 2|GIVN|N|Cody
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 21 JAN 1997
+<-- 2|DATE|Y|21 JAN 1997
+--> 1 FAMS @F10@
+<-- 1|FAMS|Y|@F10@
+--> 0 @I28@ INDI
+<-- 0|INDI|Y|@I28@
+--> 1 NAME Chris /Stockman/
+<-- 1|NAME|Y|Chris /Stockman/
+--> 2 GIVN Chris
+<-- 2|GIVN|N|Chris
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 9 AUG 2020
+<-- 2|DATE|Y|9 AUG 2020
+--> 1 FAMC @F10@
+<-- 1|FAMC|Y|@F10@
+--> 0 @I29@ INDI
+<-- 0|INDI|Y|@I29@
+--> 1 NAME Maxwell /Stockman/
+<-- 1|NAME|Y|Maxwell /Stockman/
+--> 2 GIVN Maxwell
+<-- 2|GIVN|N|Maxwell
+--> 2 SURN Stockman
+<-- 2|SURN|N|Stockman
+--> 2 _MARNM Stockman
+<-- 2|_MARNM|N|Stockman
+--> 1 SEX M
+<-- 1|SEX|Y|M
+--> 1 BIRT
+<-- 1|BIRT|Y|
+--> 2 DATE 30 JAN 2025
+<-- 2|DATE|Y|30 JAN 2025
+--> 1 FAMC @F10@
+<-- 1|FAMC|Y|@F10@
+--> 2 PEDI adopted
+<-- 2|PEDI|N|adopted
+--> 0 @F1@ FAM
+<-- 0|FAM|Y|@F1@
+--> 1 HUSB @I1@
+<-- 1|HUSB|Y|@I1@
+--> 1 WIFE @I2@
+<-- 1|WIFE|Y|@I2@
+--> 1 CHIL @I3@
+<-- 1|CHIL|Y|@I3@
+--> 1 CHIL @I10@
+<-- 1|CHIL|Y|@I10@
+--> 1 CHIL @I12@
+<-- 1|CHIL|Y|@I12@
+--> 1 CHIL @I13@
+<-- 1|CHIL|Y|@I13@
+--> 1 MARR
+<-- 1|MARR|Y|
+--> 2 DATE 1 SEP 1960
+<-- 2|DATE|Y|1 SEP 1960
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 1 _PRIMARY Y
+<-- 1|_PRIMARY|N|Y
+--> 0 @F2@ FAM
+<-- 0|FAM|Y|@F2@
+--> 1 HUSB @I3@
+<-- 1|HUSB|Y|@I3@
+--> 1 WIFE @I5@
+<-- 1|WIFE|Y|@I5@
+--> 1 CHIL @I7@
+<-- 1|CHIL|Y|@I7@
+--> 1 CHIL @I9@
+<-- 1|CHIL|Y|@I9@
+--> 1 CHIL @I19@
+<-- 1|CHIL|Y|@I19@
+--> 1 MARR
+<-- 1|MARR|Y|
+--> 2 DATE 20 FEB 1990
+<-- 2|DATE|Y|20 FEB 1990
+--> 1 DIV
+<-- 1|DIV|Y|
+--> 2 DATE 28 SEP 1997
+<-- 2|DATE|Y|28 SEP 1997
+--> 1 _CURRENT N
+<-- 1|_CURRENT|N|N
+--> 1 _PRIMARY N
+<-- 1|_PRIMARY|N|N
+--> 0 @F3@ FAM
+<-- 0|FAM|Y|@F3@
+--> 1 HUSB @I7@
+<-- 1|HUSB|Y|@I7@
+--> 1 WIFE @I4@
+<-- 1|WIFE|Y|@I4@
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 1 _PRIMARY Y
+<-- 1|_PRIMARY|N|Y
+--> 0 @F4@ FAM
+<-- 0|FAM|Y|@F4@
+--> 1 HUSB @I7@
+<-- 1|HUSB|Y|@I7@
+--> 1 WIFE @I6@
+<-- 1|WIFE|Y|@I6@
+--> 1 _CURRENT N
+<-- 1|_CURRENT|N|N
+--> 1 _PRIMARY N
+<-- 1|_PRIMARY|N|N
+--> 0 @F5@ FAM
+<-- 0|FAM|Y|@F5@
+--> 1 HUSB @I18@
+<-- 1|HUSB|Y|@I18@
+--> 1 WIFE @I9@
+<-- 1|WIFE|Y|@I9@
+--> 1 CHIL @I20@
+<-- 1|CHIL|Y|@I20@
+--> 1 CHIL @I21@
+<-- 1|CHIL|Y|@I21@
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 1 _PRIMARY Y
+<-- 1|_PRIMARY|N|Y
+--> 0 @F6@ FAM
+<-- 0|FAM|Y|@F6@
+--> 1 HUSB @I10@
+<-- 1|HUSB|Y|@I10@
+--> 1 WIFE @I11@
+<-- 1|WIFE|Y|@I11@
+--> 1 CHIL @I22@
+<-- 1|CHIL|Y|@I22@
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 1 _PRIMARY Y
+<-- 1|_PRIMARY|N|Y
+--> 0 @F7@ FAM
+<-- 0|FAM|Y|@F7@
+--> 1 HUSB @I15@
+<-- 1|HUSB|Y|@I15@
+--> 1 WIFE @I12@
+<-- 1|WIFE|Y|@I12@
+--> 1 CHIL @I26@
+<-- 1|CHIL|Y|@I26@
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 1 _PRIMARY Y
+<-- 1|_PRIMARY|N|Y
+--> 0 @F8@ FAM
+<-- 0|FAM|Y|@F8@
+--> 1 HUSB @I14@
+<-- 1|HUSB|Y|@I14@
+--> 1 WIFE @I12@
+<-- 1|WIFE|Y|@I12@
+--> 1 CHIL @I16@
+<-- 1|CHIL|Y|@I16@
+--> 1 CHIL @I17@
+<-- 1|CHIL|Y|@I17@
+--> 1 _CURRENT N
+<-- 1|_CURRENT|N|N
+--> 1 _PRIMARY N
+<-- 1|_PRIMARY|N|N
+--> 0 @F9@ FAM
+<-- 0|FAM|Y|@F9@
+--> 1 HUSB @I22@
+<-- 1|HUSB|Y|@I22@
+--> 1 WIFE @I23@
+<-- 1|WIFE|Y|@I23@
+--> 1 CHIL @I24@
+<-- 1|CHIL|Y|@I24@
+--> 1 CHIL @I25@
+<-- 1|CHIL|Y|@I25@
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 1 _PRIMARY Y
+<-- 1|_PRIMARY|N|Y
+--> 0 @F10@ FAM
+<-- 0|FAM|Y|@F10@
+--> 1 HUSB @I27@
+<-- 1|HUSB|Y|@I27@
+--> 1 WIFE @I26@
+<-- 1|WIFE|Y|@I26@
+--> 1 CHIL @I28@
+<-- 1|CHIL|Y|@I28@
+--> 1 CHIL @I29@
+<-- 1|CHIL|Y|@I29@
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+--> 1 _PRIMARY Y
+<-- 1|_PRIMARY|N|Y
+--> 0 TRLR
+<-- 0|TRLR|Y|
 
+INDIVIDUALS
+@I10@: Lockhart /Stockman/
+@I11@: Taylor /Stockman/
+@I12@: Lily /Stockman/
+@I13@: Hannah /Stockman/
+@I14@: James /Stockman/
+@I15@: Zack /Stockman/
+@I16@: Alexander /Stockman/
+@I17@: Alexandria /Stockman/
+@I18@: Mark /Stockman/
+@I19@: Bridget /Stockman/
+@I1@: Edward /Stockman/
+@I20@: Luke /Stockman/
+@I21@: Martha /Stockman/
+@I22@: Jack /Stockman II/
+@I23@: Selina /Stockman/
+@I24@: Angela /Stockman/
+@I25@: Edward /Stockman II/
+@I26@: Elise /Stockman II/
+@I27@: Cody /Stockman/
+@I28@: Chris /Stockman/
+@I29@: Maxwell /Stockman/
+@I2@: Elise /Stockman/
+@I3@: Jack /Stockman/
+@I4@: Alice /Stockman/
+@I5@: Carmen /Stockman/
+@I6@: Lisa /Alexander/
+@I7@: Jim /Stockman/
+@I8@: Bridget /Stockman/
+@I9@: Lily /Stockman II/
+
+FAMILIES
+@F10@:
+  Husband: @I27@ Cody /Stockman/
+  Wife: @I26@ Elise /Stockman II/
+@F1@:
+  Husband: @I1@ Edward /Stockman/
+  Wife: @I2@ Elise /Stockman/
+@F2@:
+  Husband: @I3@ Jack /Stockman/
+  Wife: @I5@ Carmen /Stockman/
+@F3@:
+  Husband: @I7@ Jim /Stockman/
+  Wife: @I4@ Alice /Stockman/
+@F4@:
+  Husband: @I7@ Jim /Stockman/
+  Wife: @I6@ Lisa /Alexander/
+@F5@:
+  Husband: @I18@ Mark /Stockman/
+  Wife: @I9@ Lily /Stockman II/
+@F6@:
+  Husband: @I10@ Lockhart /Stockman/
+  Wife: @I11@ Taylor /Stockman/
+@F7@:
+  Husband: @I15@ Zack /Stockman/
+  Wife: @I12@ Lily /Stockman/
+@F8@:
+  Husband: @I14@ James /Stockman/
+  Wife: @I12@ Lily /Stockman/
+@F9@:
+  Husband: @I22@ Jack /Stockman II/
+  Wife: @I23@ Selina /Stockman/
+  Children:
+    @I24@ Angela /Stockman/
+    @I25@ Edward /Stockman II/
