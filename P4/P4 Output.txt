@@ -1,0 +1,110 @@
+GEDCOM Acceptance Test File: /mnt/data/teamC_acceptance_test.ged
+GitHub Repository: https://github.com/edwincazares/cs555-teamC-gedcom-project
+
+Individuals
++-------+-----------------------+--------+------------+-----+-------+------------+---------+--------------+
+| ID    | Name                  | Gender | Birthday   | Age | Alive | Death      | Child   | Spouse       |
++-------+-----------------------+--------+------------+-----+-------+------------+---------+--------------+
+| @I1@  | Edward /Stockman/     | M      | 1930-01-01 | 40  | False | 1970-09-29 | NA      | {@F1@}       |
+| @I2@  | Elise /Stockman/      | F      | 1933-07-08 | 37  | False | 1970-09-30 | NA      | {@F1@}       |
+| @I3@  | Jack /Stockman/       | M      | 1965-01-17 | 61  | True  | NA         | {@F1@}  | {@F2@}       |
+| @I4@  | Alice /Stockman/      | F      | 1997-04-25 | 29  | True  | NA         | NA      | {@F3@}       |
+| @I5@  | Carmen /Stockman/     | F      | 1960-02-23 | 66  | True  | NA         | NA      | {@F2@}       |
+| @I6@  | Lisa /Alexander/      | F      | 1998-01-29 | 28  | True  | NA         | NA      | {@F4@}       |
+| @I7@  | Jim /Stockman/        | M      | 1995-05-30 | 31  | True  | NA         | {@F2@}  | {@F3@, @F4@} |
+| @I8@  | Bridget /Stockman/    | F      | 1995-05-30 | 31  | True  | NA         | NA      | NA           |
+| @I9@  | Lily /Stockman II/    | F      | 1995-05-30 | 31  | True  | NA         | {@F2@}  | {@F5@}       |
+| @I10@ | Lockhart /Stockman/   | M      | 1963-04-30 | 63  | True  | NA         | {@F1@}  | {@F6@}       |
+| @I11@ | Taylor /Stockman/     | F      | 1963-09-29 | 62  | True  | NA         | NA      | {@F6@}       |
+| @I12@ | Lily /Stockman/       | F      | 1963-04-30 | 63  | True  | NA         | {@F1@}  | {@F7@, @F8@} |
+| @I13@ | Hannah /Stockman/     | F      | 1962-02-27 | 19  | False | 1981-10-14 | {@F1@}  | NA           |
+| @I14@ | James /Stockman/      | M      | 1959-06-20 | 50  | False | 2010-01-09 | NA      | {@F8@}       |
+| @I15@ | Zack /Stockman/       | M      | 1960-12-02 | 65  | True  | NA         | NA      | {@F7@}       |
+| @I16@ | Alexander /Stockman/  | M      | 1996-11-21 | 29  | True  | NA         | {@F8@}  | NA           |
+| @I17@ | Alexandria /Stockman/ | F      | 1996-11-21 | 29  | True  | NA         | {@F8@}  | NA           |
+| @I18@ | Mark /Stockman/       | M      | 1992-06-24 | 33  | True  | NA         | NA      | {@F5@}       |
+| @I19@ | Bridget /Stockman/    | F      | 1995-05-30 | 31  | True  | NA         | {@F2@}  | NA           |
+| @I20@ | Luke /Stockman/       | M      | 2018-03-04 | 8   | True  | NA         | {@F5@}  | NA           |
+| @I21@ | Martha /Stockman/     | F      | 2022-07-08 | 3   | True  | NA         | {@F5@}  | NA           |
+| @I22@ | Jack /Stockman II/    | M      | 1997-07-20 | 28  | True  | NA         | {@F6@}  | {@F9@}       |
+| @I23@ | Selina /Stockman/     | F      | 1997-08-25 | 28  | True  | NA         | NA      | {@F9@}       |
+| @I24@ | Angela /Stockman/     | F      | 2024-12-20 | 1   | True  | NA         | {@F9@}  | NA           |
+| @I25@ | Edward /Stockman II/  | M      | 2024-12-20 | 1   | True  | NA         | {@F9@}  | NA           |
+| @I26@ | Elise /Stockman II/   | F      | 1999-12-04 | 26  | True  | NA         | {@F7@}  | {@F10@}      |
+| @I27@ | Cody /Stockman/       | M      | 1997-01-21 | 29  | True  | NA         | NA      | {@F10@}      |
+| @I28@ | Chris /Stockman/      | M      | 2020-08-09 | 5   | True  | NA         | {@F10@} | NA           |
+| @I29@ | Maxwell /Stockman/    | M      | 2025-01-30 | 1   | True  | NA         | {@F10@} | NA           |
+| @I30@ | Recent /Birth/        | F      | 2026-06-01 | 0   | True  | NA         | NA      | NA           |
+| @I31@ | Recent /Death/        | M      | 1960-01-01 | 66  | False | 2026-06-05 | NA      | NA           |
++-------+-----------------------+--------+------------+-----+-------+------------+---------+--------------+
+
+Families
++-------+------------+------------+------------+---------------------+---------+---------------------+-----------------------------+
+| ID    | Married    | Divorced   | Husband ID | Husband Name        | Wife ID | Wife Name           | Children                    |
++-------+------------+------------+------------+---------------------+---------+---------------------+-----------------------------+
+| @F1@  | 1960-09-01 | NA         | @I1@       | Edward /Stockman/   | @I2@    | Elise /Stockman/    | {@I13@, @I10@, @I12@, @I3@} |
+| @F2@  | 1990-02-20 | 1997-09-28 | @I3@       | Jack /Stockman/     | @I5@    | Carmen /Stockman/   | {@I7@, @I9@, @I19@}         |
+| @F3@  | NA         | NA         | @I7@       | Jim /Stockman/      | @I4@    | Alice /Stockman/    | NA                          |
+| @F4@  | NA         | NA         | @I7@       | Jim /Stockman/      | @I6@    | Lisa /Alexander/    | NA                          |
+| @F5@  | NA         | NA         | @I18@      | Mark /Stockman/     | @I9@    | Lily /Stockman II/  | {@I20@, @I21@}              |
+| @F6@  | NA         | NA         | @I10@      | Lockhart /Stockman/ | @I11@   | Taylor /Stockman/   | {@I22@}                     |
+| @F7@  | NA         | NA         | @I15@      | Zack /Stockman/     | @I12@   | Lily /Stockman/     | {@I26@}                     |
+| @F8@  | NA         | NA         | @I14@      | James /Stockman/    | @I12@   | Lily /Stockman/     | {@I16@, @I17@}              |
+| @F9@  | NA         | NA         | @I22@      | Jack /Stockman II/  | @I23@   | Selina /Stockman/   | {@I24@, @I25@}              |
+| @F10@ | NA         | NA         | @I27@      | Cody /Stockman/     | @I26@   | Elise /Stockman II/ | {@I28@, @I29@}              |
++-------+------------+------------+------------+---------------------+---------+---------------------+-----------------------------+
+
+Sprint 1 User Story Demonstration
+
+US27: Include individual ages
+PASS: The Individuals table includes an Age column calculated from birth and death dates.
+
+US28: Order siblings by age
+PASS: FAMILY: US28: @F1@: Children ordered oldest to youngest: {@I13@, @I10@, @I12@, @I3@}
+PASS: FAMILY: US28: @F2@: Children ordered oldest to youngest: {@I7@, @I9@, @I19@}
+PASS: FAMILY: US28: @F5@: Children ordered oldest to youngest: {@I20@, @I21@}
+PASS: FAMILY: US28: @F6@: Children ordered oldest to youngest: {@I22@}
+PASS: FAMILY: US28: @F7@: Children ordered oldest to youngest: {@I26@}
+PASS: FAMILY: US28: @F8@: Children ordered oldest to youngest: {@I16@, @I17@}
+PASS: FAMILY: US28: @F9@: Children ordered oldest to youngest: {@I24@, @I25@}
+PASS: FAMILY: US28: @F10@: Children ordered oldest to youngest: {@I28@, @I29@}
+
+US29: List deceased
+DECEASED: INDIVIDUAL: US29: @I1@: Edward /Stockman/ died on 1970-09-29
+DECEASED: INDIVIDUAL: US29: @I2@: Elise /Stockman/ died on 1970-09-30
+DECEASED: INDIVIDUAL: US29: @I13@: Hannah /Stockman/ died on 1981-10-14
+DECEASED: INDIVIDUAL: US29: @I14@: James /Stockman/ died on 2010-01-09
+DECEASED: INDIVIDUAL: US29: @I31@: Recent /Death/ died on 2026-06-05
+
+US30: List living married
+LIVING MARRIED: INDIVIDUAL: US30: @I3@: Jack /Stockman/ spouse families {@F2@}
+LIVING MARRIED: INDIVIDUAL: US30: @I4@: Alice /Stockman/ spouse families {@F3@}
+LIVING MARRIED: INDIVIDUAL: US30: @I5@: Carmen /Stockman/ spouse families {@F2@}
+LIVING MARRIED: INDIVIDUAL: US30: @I6@: Lisa /Alexander/ spouse families {@F4@}
+LIVING MARRIED: INDIVIDUAL: US30: @I7@: Jim /Stockman/ spouse families {@F3@, @F4@}
+LIVING MARRIED: INDIVIDUAL: US30: @I9@: Lily /Stockman II/ spouse families {@F5@}
+LIVING MARRIED: INDIVIDUAL: US30: @I10@: Lockhart /Stockman/ spouse families {@F6@}
+LIVING MARRIED: INDIVIDUAL: US30: @I11@: Taylor /Stockman/ spouse families {@F6@}
+LIVING MARRIED: INDIVIDUAL: US30: @I12@: Lily /Stockman/ spouse families {@F7@, @F8@}
+LIVING MARRIED: INDIVIDUAL: US30: @I15@: Zack /Stockman/ spouse families {@F7@}
+LIVING MARRIED: INDIVIDUAL: US30: @I18@: Mark /Stockman/ spouse families {@F5@}
+LIVING MARRIED: INDIVIDUAL: US30: @I22@: Jack /Stockman II/ spouse families {@F9@}
+LIVING MARRIED: INDIVIDUAL: US30: @I23@: Selina /Stockman/ spouse families {@F9@}
+LIVING MARRIED: INDIVIDUAL: US30: @I26@: Elise /Stockman II/ spouse families {@F10@}
+LIVING MARRIED: INDIVIDUAL: US30: @I27@: Cody /Stockman/ spouse families {@F10@}
+
+US31: List living single
+LIVING SINGLE: INDIVIDUAL: US31: @I8@: Bridget /Stockman/ is living, over 30, and has no spouse family.
+LIVING SINGLE: INDIVIDUAL: US31: @I19@: Bridget /Stockman/ is living, over 30, and has no spouse family.
+
+US32: List multiple births
+MULTIPLE BIRTH: FAMILY: US32: @F1@: 1963-04-30 includes {@I10@, @I12@}
+MULTIPLE BIRTH: FAMILY: US32: @F2@: 1995-05-30 includes {@I7@, @I9@, @I19@}
+MULTIPLE BIRTH: FAMILY: US32: @F8@: 1996-11-21 includes {@I16@, @I17@}
+MULTIPLE BIRTH: FAMILY: US32: @F9@: 2024-12-20 includes {@I24@, @I25@}
+
+US35: List recent births
+RECENT BIRTH: INDIVIDUAL: US35: @I30@: Recent /Birth/ was born on 2026-06-01
+
+US36: List recent deaths
+RECENT DEATH: INDIVIDUAL: US36: @I31@: Recent /Death/ died on 2026-06-05
