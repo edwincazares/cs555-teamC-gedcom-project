@@ -82,3 +82,31 @@ print("  Children:")
 for CHIL_id in families[FAM_id]["CHIL"]:
     CHIL_name = individuals.get(CHIL_id, "Not Found")
     print(f"    {CHIL_id} {CHIL_name}")
+
+# US29: List deceased individuals
+print("\nUS29: DECEASED INDIVIDUALS")
+deceased = False
+
+for individual_id in sorted(individuals):
+    person = individuals[individual_id]
+    if person["death"] != "NA":
+        deceased = True
+        print(f"{person['id']} | {person['name']}")
+
+if not deceased:
+    print("None")
+    
+# US30: List living married individuals
+print("\nUS30: LIVING MARRIED INDIVIDUALS")
+living_married = False
+
+for individual_id in sorted(individuals):
+    person = individuals[individual_id]
+    alive = person["death"] == "NA"
+    married = len(person["spouse"]) > 0
+    if alive and married:
+        living_married = True
+        print(f"{person['id']} | {person['name']}")
+
+if not living_married:
+    print("None")
