@@ -271,6 +271,93 @@ def print_families(individuals, families):
         rows
     ))
 
+def print_us01(individuals, families):
+    print("\nUS01: Dates before current date")
+
+    today = date.today()
+    found_error = False
+
+    for person in sorted(individuals.values(), key=lambda p: natural_id_key(p["id"])):
+        birth_date = parse_date(person["birthday"])
+        death_date = parse_date(person["death"])
+
+        if birth_date is not None and birth_date > today:
+            found_error = True
+            print(
+                f"ERROR: INDIVIDUAL: US01: {person['id']}: "
+                f"Birth date {format_date(person['birthday'])} occurs after the current date."
+            )
+
+        if death_date is not None and death_date > today:
+            found_error = True
+            print(
+                f"ERROR: INDIVIDUAL: US01: {person['id']}: "
+                f"Death date {format_date(person['death'])} occurs after the current date."
+            )
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        marriage_date = parse_date(family["married"])
+        divorce_date = parse_date(family["divorced"])
+
+        if marriage_date is not None and marriage_date > today:
+            found_error = True
+            print(
+                f"ERROR: FAMILY: US01: {family['id']}: "
+                f"Marriage date {format_date(family['married'])} occurs after the current date."
+            )
+
+        if divorce_date is not None and divorce_date > today:
+            found_error = True
+            print(
+                f"ERROR: FAMILY: US01: {family['id']}: "
+                f"Divorce date {format_date(family['divorced'])} occurs after the current date."
+            )
+
+    if not found_error:
+        print("PASS: US01: All birth, death, marriage, and divorce dates are before the current date.")
+
+def print_us02(individuals, families):
+    print("\nUS02: Birth before marriage")
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        marriage_date = parse_date(family["married"])
+
+        if marriage_date is None:
+            continue
+
+        husband_id = family["husband"]
+        wife_id = family["wife"]
+
+        husband = individuals.get(husband_id)
+        wife = individuals.get(wife_id)
+
+        if husband is not None:
+            husband_birth = parse_date(husband["birthday"])
+
+            if husband_birth is not None and husband_birth > marriage_date:
+                found_error = True
+                print(
+                    f"ERROR: FAMILY: US02: {family['id']}: "
+                    f"Husband {husband_id} was born on {format_date(husband['birthday'])} "
+                    f"after marriage date {format_date(family['married'])}."
+                )
+
+        if wife is not None:
+            wife_birth = parse_date(wife["birthday"])
+
+            if wife_birth is not None and wife_birth > marriage_date:
+                found_error = True
+                print(
+                    f"ERROR: FAMILY: US02: {family['id']}: "
+                    f"Wife {wife_id} was born on {format_date(wife['birthday'])} "
+                    f"after marriage date {format_date(family['married'])}."
+                )
+
+    if not found_error:
+        print("PASS: US02: All spouses were born before their marriage dates.")
+
 
 def print_us27(individuals):
     print("\nUS27: Include individual ages")
@@ -376,6 +463,8 @@ def main():
     print_families(individuals, families)
 
     print("\nSprint 1 User Story Demonstration")
+    print_us01(individuals, families)
+    print_us02(individuals, families)
     print_us27(individuals)
     print_us28(individuals, families)
     print_us29(individuals)
