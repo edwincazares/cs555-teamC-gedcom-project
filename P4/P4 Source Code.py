@@ -4,6 +4,8 @@ Team C GEDCOM Project - Sprint 1 Complete
 GitHub Repository: https://github.com/edwincazares/cs555-teamC-gedcom-project
 
 Sprint 1 user stories implemented:
+US01: Dates before current date
+US02: Birth before marriage
 US27: Include individual ages
 US28: Order siblings by age
 US29: List deceased
