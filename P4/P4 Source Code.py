@@ -6,6 +6,8 @@ GitHub Repository: https://github.com/edwincazares/cs555-teamC-gedcom-project
 Sprint 1 user stories implemented:
 US01: Dates before current date
 US02: Birth before marriage
+US07: Less than 150 years old
+US08: Birth before marriage of parents
 US27: Include individual ages
 US28: Order siblings by age
 US29: List deceased
@@ -360,6 +362,64 @@ def print_us02(individuals, families):
     if not found_error:
         print("PASS: US02: All spouses were born before their marriage dates.")
 
+def print_us07(individuals):
+    print("\nUS07: Less than 150 years old")
+
+    found_error = False
+
+    for person in sorted(individuals.values(), key=lambda p: natural_id_key(p["id"])):
+        current_age = calculate_age(person["birthday"], person["death"])
+
+        if current_age is not None and current_age > 150:
+            found_error = True
+            print(
+                f"ERROR: INDIVIDUAL: US07: {person['id']}: "
+                f"Individual born on {format_date(person['birthday'])} is greater than 150 years of age."
+            )
+
+    if not found_error:
+        print("PASS: US07: All individuals are younger than 150 years of age.")
+
+def print_us08(individuals, families):
+    print("\nUS08: Birth before marriage of parents")
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        marriage_date = parse_date(family["married"])
+        divorce_date = parse_date(family["divorced"])
+
+        for child_id in family["children"]:
+            child = individuals.get(child_id)
+
+            if child is None:
+                continue
+
+            birth_date = parse_date(child["birthday"])
+
+            if birth_date is None:
+                continue
+
+            if marriage_date is not None and birth_date < marriage_date:
+                found_error = True
+                print(
+                    f"ERROR: FAMILY: US08: {family['id']}: "
+                    f"Child {child_id} was born on {format_date(child['birthday'])} "
+                    f"before parents' marriage date {format_date(family['married'])}."
+                )
+
+            if divorce_date is not None and birth_date > divorce_date + timedelta(days=365):
+                found_error = True
+                print(
+                    f"ERROR: FAMILY: US08: {family['id']}: "
+                    f"Child {child_id} was born on {format_date(child['birthday'])} "
+                    f", 1 year after parents' divorce date {format_date(family['divorced'])}."
+                )
+
+    if not found_error:
+        print("PASS: US08: All individuals were born after the marriage of their parents and no more than 1 year after divorce.")
+
+
 
 def print_us27(individuals):
     print("\nUS27: Include individual ages")
@@ -467,6 +527,8 @@ def main():
     print("\nSprint 1 User Story Demonstration")
     print_us01(individuals, families)
     print_us02(individuals, families)
+    print_us07(individuals)
+    print_us08(individuals, families)
     print_us27(individuals)
     print_us28(individuals, families)
     print_us29(individuals)
