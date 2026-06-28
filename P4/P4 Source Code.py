@@ -483,6 +483,42 @@ def print_us32(individuals, families):
     if not found:
         print("PASS: FAMILY: US32: No multiple births found.")
 
+def print_us34(individuals, families):
+    print("\nUS34: List large age differences")
+    found = False
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        marriage = parse_date(family["married"])
+
+        if marriage is None:
+            continue
+
+        husband = individuals.get(family["husband"])
+        wife = individuals.get(family["wife"])
+
+        if not husband or not wife:
+            continue
+
+        husband_birthday = parse_date(husband["birthday"])
+        wife_birthday = parse_date(wife["birthday"])
+
+        if husband_birthday is None or wife_birthday is None:
+            continue
+
+        husband_age = marriage.year - husband_birthday.year
+        wife_age = marriage.year - wife_birthday.year
+
+        older = max(husband_age, wife_age)
+        younger = min(husband_age, wife_age)
+
+        if older > 2 * younger:
+            found = True
+            print(
+                f"LARGE AGE DIFFERENCE: FAMILY: US34: {family['id']}: "
+                f"{husband['id']} ({husband_age}) and {wife['id']} ({wife_age})"
+            )
+
+    if not found:
+        print("PASS: FAMILY: US34: No couples found with large age differences.")
 
 def print_us35(individuals):
     print("\nUS35: List recent births")
@@ -535,6 +571,7 @@ def main():
     print_us30(individuals)
     print_us31(individuals)
     print_us32(individuals, families)
+    print_us34(individuals, families)
     print_us35(individuals)
     print_us36(individuals)
 
