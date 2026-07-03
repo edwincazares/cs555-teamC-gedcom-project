@@ -421,8 +421,8 @@ def print_us05(individuals, families):
         if marriage_date is None:
             continue
 
-        husband = individuals.get(family["husband_id"])
-        wife = individuals.get(family["wife_id"])
+        husband = individuals.get(family["husband"])
+        wife = individuals.get(family["wife"])
 
         if husband:
             death_date = parse_date(husband["death"])
@@ -447,7 +447,7 @@ def print_us05(individuals, families):
     if not found_error:
         print("PASS: US05: All marriages occurred before death.")
 
-def print_us06(families, individuals):
+def print_us06(individuals, families):
     print("\nUS06: Divorce before death")
 
     found_error = False
@@ -458,8 +458,8 @@ def print_us06(families, individuals):
         if divorce_date is None:
             continue
 
-        husband = individuals.get(family["husband_id"])
-        wife = individuals.get(family["wife_id"])
+        husband = individuals.get(family["husband"])
+        wife = individuals.get(family["wife"])
 
         if husband:
             death_date = parse_date(husband["death"])
@@ -547,8 +547,8 @@ def print_us09(individuals, families):
     found_error = False
 
     for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
-        husband = individuals.get(family["husband_id"])
-        wife = individuals.get(family["wife_id"])
+        husband = individuals.get(family["husband"])
+        wife = individuals.get(family["wife"])
 
         for child_id in family["children"]:
             child = individuals.get(child_id)
@@ -714,7 +714,7 @@ def print_us36(individuals):
 
 
 def main():
-    filename = sys.argv[1] if len(sys.argv) > 1 else "teamC_acceptance_test.ged"
+    filename = sys.argv[1] if len(sys.argv) > 1 else "P4 Test Files.ged"
     individuals, families = parse_gedcom(filename)
 
     print(f"GEDCOM Acceptance Test File: {filename}")
@@ -726,8 +726,13 @@ def main():
     print("\nSprint 1 User Story Demonstration")
     print_us01(individuals, families)
     print_us02(individuals, families)
+    print_us03(individuals)
+    print_us04(families)
+    print_us05(individuals, families)
+    print_us06(individuals, families)
     print_us07(individuals)
     print_us08(individuals, families)
+    print_us09(individuals, families)
     print_us27(individuals)
     print_us28(individuals, families)
     print_us29(individuals)
