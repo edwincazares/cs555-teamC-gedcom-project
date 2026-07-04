@@ -549,6 +549,76 @@ def print_us36(individuals):
     if not recent:
         print("PASS: INDIVIDUAL: US36: No deaths found in the last 30 days.")
 
+def print_us37(individuals, families):
+    print("\nUS37: List recent survivors")
+    cutoff = date.today() - timedelta(days=30)
+    found = False
+
+    for person in sorted(individuals.values(), key=lambda p: natural_id_key(p["id"])):
+        death_date = parse_date(person["death"])
+
+        if death_date is None or not (cutoff <= death_date <= date.today()):
+            continue
+
+        for family_id in person["spouse"]:
+            family = families.get(family_id)
+
+            if family is None:
+                continue
+
+            for child_id in family["children"]:
+                child = individuals.get(child_id)
+
+                if child and child["death"] == "NA":
+                    found = True
+                    print(
+                        f"SURVIVOR: INDIVIDUAL: US37: {child['id']}: "
+                        f"{child['name']} is a living child of "
+                        f"{person['id']}."
+                    )
+
+    if not found:
+        print("PASS: INDIVIDUAL: US37: No recent survivors found.")
+
+def print_us38(individuals):
+    print("\nUS38: List upcoming birthdays")
+    today = date.today()
+    found = False
+
+    for person in sorted(individuals.values(), key=lambda p: natural_id_key(p["id"])):
+        if person["death"] != "NA":
+            continue
+
+        birth_date = parse_date(person["birthday"])
+
+        if birth_date is None:
+            continue
+
+        birthday = date(
+            today.year,
+            birth_date.month,
+            birth_date.day
+        )
+
+        if birthday < today:
+            birthday = date(
+                today.year + 1,
+                birth_date.month,
+                birth_date.day
+            )
+
+        days_until_birthday = (birthday - today).days
+
+        if 0 <= days_until_birthday <= 30:
+            found = True
+            print(
+                f"UPCOMING BIRTHDAY: INDIVIDUAL: US38: "
+                f"{person['id']}: {person['name']} "
+                f"has a birthday on {birthday}"
+            )
+
+    if not found:
+        print("PASS: INDIVIDUAL: US38: No upcoming birthdays")
 
 def main():
     filename = sys.argv[1] if len(sys.argv) > 1 else "teamC_acceptance_test.ged"
@@ -574,7 +644,8 @@ def main():
     print_us34(individuals, families)
     print_us35(individuals)
     print_us36(individuals)
-
+    print_us37(individuals, families)
+    print_us38(individuals)
 
 if __name__ == "__main__":
     main()
