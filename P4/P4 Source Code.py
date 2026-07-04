@@ -362,6 +362,128 @@ def print_us02(individuals, families):
     if not found_error:
         print("PASS: US02: All spouses were born before their marriage dates.")
 
+def print_us03(individuals):
+    print("\nUS03: Birth before death")
+
+    found_error = False
+
+    for individual in sorted(individuals.values(), key=lambda i: natural_id_key(i["id"])):
+        birth_date = parse_date(individual["birthday"])
+        death_date = parse_date(individual["death"])
+
+        # Skip people who do not have both dates
+        if birth_date is None or death_date is None:
+            continue
+
+        if death_date < birth_date:
+            found_error = True
+            print(
+                f"ERROR: INDIVIDUAL: US03: {individual['id']}: "
+                f"{individual['name']} died on {format_date(individual['death'])} "
+                f"before being born on {format_date(individual['birthday'])}."
+            )
+
+    if not found_error:
+        print("PASS: US03: All individuals were born before their death dates.")
+
+def print_us04(families):
+    print("\nUS04: Marriage before divorce")
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        marriage_date = parse_date(family["married"])
+        divorce_date = parse_date(family["divorced"])
+
+        if marriage_date is None or divorce_date is None:
+            continue
+
+        if divorce_date < marriage_date:
+            found_error = True
+            print(
+                f"ERROR: FAMILY: US04: {family['id']}: "
+                f"Divorce date {format_date(family['divorced'])} occurs before "
+                f"marriage date {format_date(family['married'])}."
+            )
+
+    if not found_error:
+        print("PASS: US04: All divorce dates occur after marriage dates.")
+
+def print_us05(individuals, families):
+    print("\nUS05: Marriage before death")
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+
+        marriage_date = parse_date(family["married"])
+
+        if marriage_date is None:
+            continue
+
+        husband = individuals.get(family["husband"])
+        wife = individuals.get(family["wife"])
+
+        if husband:
+            death_date = parse_date(husband["death"])
+
+            if death_date and marriage_date > death_date:
+                found_error = True
+                print(
+                    f"ERROR: FAMILY: US05: {family['id']}: "
+                    f"Husband {husband['id']} married after death."
+                )
+
+        if wife:
+            death_date = parse_date(wife["death"])
+
+            if death_date and marriage_date > death_date:
+                found_error = True
+                print(
+                    f"ERROR: FAMILY: US05: {family['id']}: "
+                    f"Wife {wife['id']} married after death."
+                )
+
+    if not found_error:
+        print("PASS: US05: All marriages occurred before death.")
+
+def print_us06(individuals, families):
+    print("\nUS06: Divorce before death")
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        divorce_date = parse_date(family["divorced"])
+
+        if divorce_date is None:
+            continue
+
+        husband = individuals.get(family["husband"])
+        wife = individuals.get(family["wife"])
+
+        if husband:
+            death_date = parse_date(husband["death"])
+
+            if death_date and divorce_date > death_date:
+                found_error = True
+                print(
+                    f"ERROR: FAMILY: US06: {family['id']}: "
+                    f"Husband {husband['id']} divorced after death."
+                )
+
+        if wife:
+            death_date = parse_date(wife["death"])
+
+            if death_date and divorce_date > death_date:
+                found_error = True
+                print(
+                    f"ERROR: FAMILY: US06: {family['id']}: "
+                    f"Wife {wife['id']} divorced after death."
+                )
+
+    if not found_error:
+        print("PASS: US06: All divorces occurred before death.")
+
 def print_us07(individuals):
     print("\nUS07: Less than 150 years old")
 
@@ -419,7 +541,48 @@ def print_us08(individuals, families):
     if not found_error:
         print("PASS: US08: All individuals were born after the marriage of their parents and no more than 1 year after divorce.")
 
+def print_us09(individuals, families):
+    print("\nUS09: Birth before death of parents")
 
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        husband = individuals.get(family["husband"])
+        wife = individuals.get(family["wife"])
+
+        for child_id in family["children"]:
+            child = individuals.get(child_id)
+
+            if not child:
+                continue
+
+            child_birth_date = parse_date(child["birthday"])
+
+            if child_birth_date is None:
+                continue
+
+            if husband:
+                father_death_date = parse_date(husband["death"])
+
+                if father_death_date and child_birth_date > father_death_date:
+                    found_error = True
+                    print(
+                        f"ERROR: INDIVIDUAL: US09: {child['id']}: "
+                        f"{child['name']} was born after father {husband['id']} died."
+                    )
+
+            if wife:
+                mother_death_date = parse_date(wife["death"])
+
+                if mother_death_date and child_birth_date > mother_death_date:
+                    found_error = True
+                    print(
+                        f"ERROR: INDIVIDUAL: US09: {child['id']}: "
+                        f"{child['name']} was born after mother {wife['id']} died."
+                    )
+
+    if not found_error:
+        print("PASS: US09: All children were born before the death of their parents.")
 
 def print_us27(individuals):
     print("\nUS27: Include individual ages")
@@ -621,7 +784,7 @@ def print_us38(individuals):
         print("PASS: INDIVIDUAL: US38: No upcoming birthdays")
 
 def main():
-    filename = sys.argv[1] if len(sys.argv) > 1 else "teamC_acceptance_test.ged"
+    filename = sys.argv[1] if len(sys.argv) > 1 else "P4 Test Files.ged"
     individuals, families = parse_gedcom(filename)
 
     print(f"GEDCOM Acceptance Test File: {filename}")
@@ -633,8 +796,13 @@ def main():
     print("\nSprint 1 User Story Demonstration")
     print_us01(individuals, families)
     print_us02(individuals, families)
+    print_us03(individuals)
+    print_us04(families)
+    print_us05(individuals, families)
+    print_us06(individuals, families)
     print_us07(individuals)
     print_us08(individuals, families)
+    print_us09(individuals, families)
     print_us27(individuals)
     print_us28(individuals, families)
     print_us29(individuals)
