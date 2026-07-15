@@ -31,6 +31,7 @@ US38: List upcoming birthdays
 from datetime import date, datetime, timedelta
 import re
 import sys
+import calendar
 
 
 VALID_TAGS = {
@@ -619,6 +620,15 @@ def get_family_end_date_for_person(person_id, family, individuals):
 
     return parse_date(spouse["death"])
 
+def add_months(date_value, months):
+    month = date_value.month - 1 + months
+    year = date_value.year + month // 12
+    month = month % 12 + 1
+
+    day = min(date_value.day, calendar.monthrange(year, month)[1])
+
+    return date_value.replace(year=year, month=month, day=day)
+
 
 def print_us10(individuals, families):
     print("\nUS10: Marriage after age 14")
@@ -684,6 +694,100 @@ def print_us11(individuals, families):
 
     if not found_error:
         print("PASS: US11: No overlapping marriages were found.")
+
+def print_us12(individuals, families):
+    print("\nUS12: Parents not too old")
+    print(
+        "Analysis: This check identifies parent-child age differences that are "
+        "biologically unlikely and may indicate incorrect birth dates or family relationships."
+    )
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        father = individuals.get(family["husband"])
+        mother = individuals.get(family["wife"])
+
+        for child_id in family["children"]:
+            child = individuals.get(child_id)
+
+            if child is None:
+                continue
+
+            child_birth = parse_date(child["birthday"])
+
+            if child_birth is None:
+                continue
+
+            if father:
+                father_age = age_on_date(father["birthday"], child_birth)
+
+                if father_age is not None and father_age >= 80:
+                    found_error = True
+                    print(
+                        f"ERROR: FAMILY: US12: {family['id']}: "
+                        f"Father {father['id']} ({father['name']}) was {father_age} years old "
+                        f"when child {child_id} ({child['name']}) was born."
+                    )
+
+            if mother:
+                mother_age = age_on_date(mother["birthday"], child_birth)
+
+                if mother_age is not None and mother_age >= 60:
+                    found_error = True
+                    print(
+                        f"ERROR: FAMILY: US12: {family['id']}: "
+                        f"Mother {mother['id']} ({mother['name']}) was {mother_age} years old "
+                        f"when child {child_id} ({child['name']}) was born."
+                    )
+
+    if not found_error:
+        print("PASS: US12: All parents have valid age differences from their children.")
+
+def print_us13(individuals, families):
+    print("\nUS13: Sibling spacing")
+    print(
+        "Analysis: This check finds sibling birth dates that are too close to represent "
+        "separate pregnancies but too far apart to represent multiple births."
+    )
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        children = []
+
+        for child_id in family["children"]:
+            child = individuals.get(child_id)
+
+            if child is None:
+                continue
+
+            birth = parse_date(child["birthday"])
+
+            if birth is None:
+                continue
+
+            children.append((child_id, child, birth))
+
+        children.sort(key=lambda item: item[2])
+
+        for i in range(len(children)):
+            id1, child1, birth1 = children[i]
+
+            for id2, child2, birth2 in children[i + 1:]:
+                day_difference = (birth2 - birth1).days
+
+                if day_difference >= 2 and birth2 <= add_months(birth1, 8):
+                    found_error = True
+                    print(
+                        f"ERROR: FAMILY: US13: {family['id']}: "
+                        f"Siblings {id1} ({child1['name']}) and "
+                        f"{id2} ({child2['name']}) were born "
+                        f"{day_difference} days apart."
+                    )
+
+    if not found_error:
+        print("PASS: US13: All siblings have valid birth spacing.")
 
 def print_us27(individuals):
     print("\nUS27: Include individual ages")
@@ -906,6 +1010,8 @@ def main():
     print_us09(individuals, families)
     print_us10(individuals, families)
     print_us11(individuals, families)
+    print_us12(individuals, families)
+    print_us13(individuals, families)
     print_us27(individuals)
     print_us28(individuals, families)
     print_us29(individuals)

@@ -101,6 +101,70 @@ class TestSprint2UserStories(unittest.TestCase):
         self.assertIn("ERROR: INDIVIDUAL: US11: @I1@", output)
         self.assertIn("overlapping marriages", output)
 
+    def test_us12_parents_not_too_old(self):
+        individuals = {
+        "@I1@": {
+            "id": "@I1@",
+            "name": "Old /Father/",
+            "birthday": "1 JAN 1900"
+        },
+        "@I2@": {
+            "id": "@I2@",
+            "name": "Old /Mother/",
+            "birthday": "1 JAN 1920"
+        },
+        "@I3@": {
+            "id": "@I3@",
+            "name": "Young /Child/",
+            "birthday": "1 JAN 1985"
+        }
+    }
+
+    families = {
+        "@F1@": {
+            "id": "@F1@",
+            "husband": "@I1@",
+            "wife": "@I2@",
+            "children": ["@I3@"]
+        }
+    }
+
+    output = capture_output(gedcom.print_us12, individuals, families)
+
+    self.assertIn("ERROR: FAMILY: US12: @F1@", output)
+    self.assertIn("Father @I1@", output)
+    self.assertIn("was 85 years old", output)
+    self.assertIn("Mother @I2@", output)
+    self.assertIn("was 65 years old", output)
+
+    def test_us13_sibling_spacing(self):
+        individuals = {
+        "@I1@": {
+            "id": "@I1@",
+            "name": "First /Child/",
+            "birthday": "1 JAN 2020"
+        },
+        "@I2@": {
+            "id": "@I2@",
+            "name": "Second /Child/",
+            "birthday": "1 APR 2020"
+        }
+    }
+
+    families = {
+        "@F1@": {
+            "id": "@F1@",
+            "children": ["@I1@", "@I2@"]
+        }
+    }
+
+    output = capture_output(gedcom.print_us13, individuals, families)
+
+    self.assertIn("ERROR: FAMILY: US13: @F1@", output)
+    self.assertIn("Siblings @I1@", output)
+    self.assertIn("@I2@", output)
+    self.assertIn("were born 91 days apart", output)
+
     def test_us37_recent_survivors(self):
         recent_death = (date.today() - timedelta(days=10)).strftime("%-d %b %Y").upper()
         individuals = {
