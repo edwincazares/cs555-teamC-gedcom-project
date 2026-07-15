@@ -1,0 +1,14 @@
+test_us03_birth_before_death (__main__.TestSprint2UserStories.test_us03_birth_before_death) ... ok
+test_us04_marriage_before_divorce (__main__.TestSprint2UserStories.test_us04_marriage_before_divorce) ... ok
+test_us05_marriage_before_death (__main__.TestSprint2UserStories.test_us05_marriage_before_death) ... ok
+test_us06_divorce_before_death (__main__.TestSprint2UserStories.test_us06_divorce_before_death) ... ok
+test_us09_birth_before_death_of_parents (__main__.TestSprint2UserStories.test_us09_birth_before_death_of_parents) ... ok
+test_us10_marriage_after_age_14 (__main__.TestSprint2UserStories.test_us10_marriage_after_age_14) ... ok
+test_us11_no_bigamy (__main__.TestSprint2UserStories.test_us11_no_bigamy) ... ok
+test_us37_recent_survivors (__main__.TestSprint2UserStories.test_us37_recent_survivors) ... ok
+test_us38_upcoming_birthdays (__main__.TestSprint2UserStories.test_us38_upcoming_birthdays) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK
