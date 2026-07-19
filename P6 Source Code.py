@@ -789,6 +789,57 @@ def print_us13(individuals, families):
     if not found_error:
         print("PASS: US13: All siblings have valid birth spacing.")
 
+def print_us14(individuals, families):
+    print("\nUS14: Multiple births <= 5")
+    
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        births_by_date = {}
+
+        for child_id in family["children"]:
+            child = individuals.get(child_id)
+
+            if child is None:
+                continue
+
+            birthday = parse_date(child["birthday"])
+
+            if birthday is None:
+                continue
+
+            births_by_date.setdefault(birthday, []).append(child_id)
+
+        for birthday, children in births_by_date.items():
+            if len(children) > 5:
+                found_error = True
+                print(
+                    f"ERROR: FAMILY: US14: {family['id']}: "
+                    f"{len(children)} siblings were born on "
+                    f"{birthday} ({', '.join(children)})."
+                )
+
+    if not found_error:
+        print("PASS: FAMILY: US14: No families have more than 5 siblings born at the same time.")
+        
+def print_us15(families):
+    print("\nUS15: Fewer than 15 siblings")
+    
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        sibling_count = len(family["children"])
+
+        if sibling_count >= 15:
+            found_error = True
+            print(
+                f"ERROR: FAMILY: US15: {family['id']}: "
+                f"Family has {sibling_count} siblings."
+            )
+
+    if not found_error:
+        print("PASS: FAMILY: US15: All families have fewer than 15 siblings.")
+
 def print_us27(individuals):
     print("\nUS27: Include individual ages")
     print("PASS: The Individuals table includes an Age column calculated from birth and death dates.")
@@ -1012,6 +1063,8 @@ def main():
     print_us11(individuals, families)
     print_us12(individuals, families)
     print_us13(individuals, families)
+    print_us14(individuals, families)
+    print_us15(families)
     print_us27(individuals)
     print_us28(individuals, families)
     print_us29(individuals)
