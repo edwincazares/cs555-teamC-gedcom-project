@@ -789,6 +789,86 @@ def print_us13(individuals, families):
     if not found_error:
         print("PASS: US13: All siblings have valid birth spacing.")
 
+def print_us14(individuals, families):
+    print("\nUS14: Multiple births <= 5")
+    print(
+        "Analysis: This check groups siblings by birth date and identifies families "
+        "with more than five children born on the same day."
+    )
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        birth_groups = {}
+
+        for child_id in family["children"]:
+            child = individuals.get(child_id)
+
+            if child is None:
+                continue
+
+            birth_date = parse_date(child["birthday"])
+
+            if birth_date is None:
+                continue
+
+            if birth_date not in birth_groups:
+                birth_groups[birth_date] = []
+
+            birth_groups[birth_date].append((child_id, child))
+
+        for birth_date, children in sorted(birth_groups.items()):
+            if len(children) > 5:
+                found_error = True
+
+                child_list = ", ".join(
+                    f"{child_id} ({child['name']})"
+                    for child_id, child in children
+                )
+
+                print(
+                    f"ERROR: FAMILY: US14: {family['id']}: "
+                    f"{len(children)} siblings were born on "
+                    f"{birth_date.isoformat()}: {child_list}."
+                )
+
+    if not found_error:
+        print(
+            "PASS: US14: No family has more than five siblings "
+            "born on the same day."
+        )
+
+
+def print_us15(individuals, families):
+    print("\nUS15: Fewer than 15 siblings")
+    print(
+        "Analysis: This check counts the children in each family and identifies "
+        "families containing 15 or more siblings."
+    )
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        valid_children = []
+
+        for child_id in family["children"]:
+            if child_id in individuals:
+                valid_children.append(child_id)
+
+        sibling_count = len(valid_children)
+
+        if sibling_count >= 15:
+            found_error = True
+
+            print(
+                f"ERROR: FAMILY: US15: {family['id']}: "
+                f"Family has {sibling_count} children. "
+                f"Families must have fewer than 15 children."
+            )
+
+    if not found_error:
+        print("PASS: US15: All families have fewer than 15 siblings.")
+
 def print_us27(individuals):
     print("\nUS27: Include individual ages")
     print("PASS: The Individuals table includes an Age column calculated from birth and death dates.")
@@ -1012,6 +1092,8 @@ def main():
     print_us11(individuals, families)
     print_us12(individuals, families)
     print_us13(individuals, families)
+    print_us14(individuals, families)
+    print_us15(individuals, families)
     print_us27(individuals)
     print_us28(individuals, families)
     print_us29(individuals)

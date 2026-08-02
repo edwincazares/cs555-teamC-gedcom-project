@@ -165,6 +165,107 @@ class TestSprint2UserStories(unittest.TestCase):
     self.assertIn("@I2@", output)
     self.assertIn("were born 91 days apart", output)
 
+    def test_us14_multiple_births_more_than_five(self):
+        individuals = {
+        "@I1@": {
+            "id": "@I1@",
+            "name": "Child One /Test/",
+            "birthday": "1 JAN 2020"
+        },
+        "@I2@": {
+            "id": "@I2@",
+            "name": "Child Two /Test/",
+            "birthday": "1 JAN 2020"
+        },
+        "@I3@": {
+            "id": "@I3@",
+            "name": "Child Three /Test/",
+            "birthday": "1 JAN 2020"
+        },
+        "@I4@": {
+            "id": "@I4@",
+            "name": "Child Four /Test/",
+            "birthday": "1 JAN 2020"
+        },
+        "@I5@": {
+            "id": "@I5@",
+            "name": "Child Five /Test/",
+            "birthday": "1 JAN 2020"
+        },
+        "@I6@": {
+            "id": "@I6@",
+            "name": "Child Six /Test/",
+            "birthday": "1 JAN 2020"
+        }
+    }
+
+    families = {
+        "@F1@": {
+            "id": "@F1@",
+            "children": [
+                "@I1@",
+                "@I2@",
+                "@I3@",
+                "@I4@",
+                "@I5@",
+                "@I6@"
+            ]
+        }
+    }
+
+    output = capture_output(gedcom.print_us14, individuals, families)
+
+    self.assertIn("ERROR: FAMILY: US14: @F1@", output)
+    self.assertIn("6 siblings were born on 2020-01-01", output)
+
+
+def test_us15_fifteen_or_more_siblings(self):
+    individuals = {
+        "@I1@": {"id": "@I1@", "name": "Child One /Test/"},
+        "@I2@": {"id": "@I2@", "name": "Child Two /Test/"},
+        "@I3@": {"id": "@I3@", "name": "Child Three /Test/"},
+        "@I4@": {"id": "@I4@", "name": "Child Four /Test/"},
+        "@I5@": {"id": "@I5@", "name": "Child Five /Test/"},
+        "@I6@": {"id": "@I6@", "name": "Child Six /Test/"},
+        "@I7@": {"id": "@I7@", "name": "Child Seven /Test/"},
+        "@I8@": {"id": "@I8@", "name": "Child Eight /Test/"},
+        "@I9@": {"id": "@I9@", "name": "Child Nine /Test/"},
+        "@I10@": {"id": "@I10@", "name": "Child Ten /Test/"},
+        "@I11@": {"id": "@I11@", "name": "Child Eleven /Test/"},
+        "@I12@": {"id": "@I12@", "name": "Child Twelve /Test/"},
+        "@I13@": {"id": "@I13@", "name": "Child Thirteen /Test/"},
+        "@I14@": {"id": "@I14@", "name": "Child Fourteen /Test/"},
+        "@I15@": {"id": "@I15@", "name": "Child Fifteen /Test/"}
+    }
+
+    families = {
+        "@F1@": {
+            "id": "@F1@",
+            "children": [
+                "@I1@",
+                "@I2@",
+                "@I3@",
+                "@I4@",
+                "@I5@",
+                "@I6@",
+                "@I7@",
+                "@I8@",
+                "@I9@",
+                "@I10@",
+                "@I11@",
+                "@I12@",
+                "@I13@",
+                "@I14@",
+                "@I15@"
+            ]
+        }
+    }
+
+    output = capture_output(gedcom.print_us15, individuals, families)
+
+    self.assertIn("ERROR: FAMILY: US15: @F1@", output)
+    self.assertIn("Family has 15 children", output)
+
     def test_us37_recent_survivors(self):
         recent_death = (date.today() - timedelta(days=10)).strftime("%-d %b %Y").upper()
         individuals = {
