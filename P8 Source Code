@@ -960,6 +960,75 @@ def print_us21(individuals, families):
     if not found_error:
         print("PASS: US21: All spouses have the correct gender for their roles.")
 
+def print_us23(individuals):
+    print("\nUS23: Unique name and birth date")
+
+    found_error = False
+    unique_values = {}
+
+    for person in sorted(individuals.values(), key=lambda p: natural_id_key(p["id"])):
+
+        birthday = parse_date(person["birthday"])
+
+        if birthday is None:
+            continue
+
+        name_and_birthdate = (
+            person["name"],
+            birthday
+        )
+
+        if name_and_birthdate in unique_values:
+            other_id = unique_values[name_and_birthdate]
+            found_error = True
+            print(
+                f"ERROR: INDIVIDUAL: US23: "
+                f"{person['id']} ({person['name']}) and "
+                f"{other_id} share birth date "
+                f"{birthday}."
+            )
+        else:
+            unique_values[name_and_birthdate] = person["id"]
+
+    if not found_error:
+        print("PASS: US23: No more than one individual with the same name and birth date appear.")
+        
+def print_us24(individuals, families):
+    print("\nUS24: Unique families by spouses")
+    found = False
+    family_records = {}
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        husband_id = family.get("husband")
+        wife_id = family.get("wife")
+
+        husband = individuals.get(husband_id)
+        wife = individuals.get(wife_id)
+
+        if husband is None or wife is None:
+            continue
+
+        spouses_and_marriage_date = (
+            husband["name"],
+            wife["name"],
+            family["married"]
+        )
+
+        if spouses_and_marriage_date in family_records:
+            found = True
+            print(
+                f"ERROR: FAMILY: US24: {family['id']}: "
+                f"Duplicate family found with {family_records[spouses_and_marriage_date]}. "
+                f"Spouses {husband['name']} and {wife['name']} "
+                f"have the same marriage date "
+                f"{format_date(family['married'])}."
+            )
+        else:
+            family_records[spouses_and_marriage_date] = family["id"]
+
+    if not found:
+        print("PASS: US24: No more than one family with the same spouses by name and the same marriage date.")
+
 def print_us27(individuals):
     print("\nUS27: Include individual ages")
     print("PASS: The Individuals table includes an Age column calculated from birth and death dates.")
@@ -1187,6 +1256,8 @@ def main():
     print_us15(families)
     print_us20(individuals, families)
     print_us21(individuals, families)
+    print_us23(individuals)
+    print_us24(individuals, families)
     print_us27(individuals)
     print_us28(individuals, families)
     print_us29(individuals)
