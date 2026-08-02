@@ -165,6 +165,97 @@ class TestSprint2UserStories(unittest.TestCase):
     self.assertIn("@I2@", output)
     self.assertIn("were born 91 days apart", output)
 
+def test_us20_aunt_or_uncle_marriage(self):
+    individuals = {
+        "@I1@": {
+            "id": "@I1@",
+            "name": "Grandfather /Family/"
+        },
+        "@I2@": {
+            "id": "@I2@",
+            "name": "Grandmother /Family/"
+        },
+        "@I3@": {
+            "id": "@I3@",
+            "name": "Parent /Family/"
+        },
+        "@I4@": {
+            "id": "@I4@",
+            "name": "Uncle /Family/"
+        },
+        "@I5@": {
+            "id": "@I5@",
+            "name": "Other Parent /Family/"
+        },
+        "@I6@": {
+            "id": "@I6@",
+            "name": "Niece /Family/"
+        }
+    }
+
+    families = {
+        # @I3@ and @I4@ are siblings.
+        "@F1@": {
+            "id": "@F1@",
+            "husband": "@I1@",
+            "wife": "@I2@",
+            "children": ["@I3@", "@I4@"]
+        },
+
+        # @I6@ is the child of @I3@, making @I4@ her uncle.
+        "@F2@": {
+            "id": "@F2@",
+            "husband": "@I5@",
+            "wife": "@I3@",
+            "children": ["@I6@"]
+        },
+
+        # Invalid marriage between @I4@ and his niece @I6@.
+        "@F3@": {
+            "id": "@F3@",
+            "husband": "@I4@",
+            "wife": "@I6@",
+            "children": []
+        }
+    }
+
+    output = capture_output(gedcom.print_us20, individuals, families)
+
+    self.assertIn("ERROR: FAMILY: US20: @F3@", output)
+    self.assertIn("@I4@ (Uncle /Family/) is the uncle of @I6@", output)
+
+
+def test_us21_correct_gender_for_role(self):
+    individuals = {
+        "@I1@": {
+            "id": "@I1@",
+            "name": "Incorrect /Husband/",
+            "gender": "F"
+        },
+        "@I2@": {
+            "id": "@I2@",
+            "name": "Incorrect /Wife/",
+            "gender": "M"
+        }
+    }
+
+    families = {
+        "@F1@": {
+            "id": "@F1@",
+            "husband": "@I1@",
+            "wife": "@I2@",
+            "children": []
+        }
+    }
+
+    output = capture_output(gedcom.print_us21, individuals, families)
+
+    self.assertIn("ERROR: FAMILY: US21: @F1@", output)
+    self.assertIn("Husband @I1@", output)
+    self.assertIn("has gender F instead of M", output)
+    self.assertIn("Wife @I2@", output)
+    self.assertIn("has gender M instead of F", output)
+
     def test_us37_recent_survivors(self):
         recent_death = (date.today() - timedelta(days=10)).strftime("%-d %b %Y").upper()
         individuals = {

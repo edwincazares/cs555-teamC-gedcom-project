@@ -840,6 +840,126 @@ def print_us15(families):
     if not found_error:
         print("PASS: FAMILY: US15: All families have fewer than 15 siblings.")
 
+def print_us20(individuals, families):
+    print("\nUS20: Aunts and uncles should not marry nieces or nephews")
+    print(
+        "Analysis: This check identifies marriages where one spouse is the aunt "
+        "or uncle of the other spouse."
+    )
+
+    found_error = False
+
+    # Maps each child to their parents.
+    parents_by_child = {}
+
+    # Maps each person to their siblings.
+    siblings_by_person = {}
+
+    for family in families.values():
+        children = family.get("children", [])
+
+        father_id = family.get("husband")
+        mother_id = family.get("wife")
+
+        for child_id in children:
+            parents_by_child.setdefault(child_id, set())
+
+            if father_id and father_id != "NA":
+                parents_by_child[child_id].add(father_id)
+
+            if mother_id and mother_id != "NA":
+                parents_by_child[child_id].add(mother_id)
+
+            siblings_by_person.setdefault(child_id, set())
+
+            for sibling_id in children:
+                if sibling_id != child_id:
+                    siblings_by_person[child_id].add(sibling_id)
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        husband_id = family.get("husband")
+        wife_id = family.get("wife")
+
+        husband = individuals.get(husband_id)
+        wife = individuals.get(wife_id)
+
+        if husband is None or wife is None:
+            continue
+
+        husband_parents = parents_by_child.get(husband_id, set())
+        wife_parents = parents_by_child.get(wife_id, set())
+
+        husband_aunts_uncles = set()
+        wife_aunts_uncles = set()
+
+        for parent_id in husband_parents:
+            husband_aunts_uncles.update(
+                siblings_by_person.get(parent_id, set())
+            )
+
+        for parent_id in wife_parents:
+            wife_aunts_uncles.update(
+                siblings_by_person.get(parent_id, set())
+            )
+
+        if wife_id in husband_aunts_uncles:
+            found_error = True
+            print(
+                f"ERROR: FAMILY: US20: {family['id']}: "
+                f"{wife_id} ({wife['name']}) is the aunt of "
+                f"{husband_id} ({husband['name']})."
+            )
+
+        if husband_id in wife_aunts_uncles:
+            found_error = True
+            print(
+                f"ERROR: FAMILY: US20: {family['id']}: "
+                f"{husband_id} ({husband['name']}) is the uncle of "
+                f"{wife_id} ({wife['name']})."
+            )
+
+    if not found_error:
+        print(
+            "PASS: US20: No aunts or uncles are married to their "
+            "nieces or nephews."
+        )
+
+
+def print_us21(individuals, families):
+    print("\nUS21: Correct gender for role")
+    print(
+        "Analysis: This check verifies that husbands are listed as male "
+        "and wives are listed as female in each family."
+    )
+
+    found_error = False
+
+    for family in sorted(families.values(), key=lambda f: natural_id_key(f["id"])):
+        husband_id = family.get("husband")
+        wife_id = family.get("wife")
+
+        husband = individuals.get(husband_id)
+        wife = individuals.get(wife_id)
+
+        if husband is not None and husband.get("gender") != "M":
+            found_error = True
+            print(
+                f"ERROR: FAMILY: US21: {family['id']}: "
+                f"Husband {husband_id} ({husband['name']}) has gender "
+                f"{husband.get('gender', 'NA')} instead of M."
+            )
+
+        if wife is not None and wife.get("gender") != "F":
+            found_error = True
+            print(
+                f"ERROR: FAMILY: US21: {family['id']}: "
+                f"Wife {wife_id} ({wife['name']}) has gender "
+                f"{wife.get('gender', 'NA')} instead of F."
+            )
+
+    if not found_error:
+        print("PASS: US21: All spouses have the correct gender for their roles.")
+
 def print_us27(individuals):
     print("\nUS27: Include individual ages")
     print("PASS: The Individuals table includes an Age column calculated from birth and death dates.")
@@ -1065,6 +1185,8 @@ def main():
     print_us13(individuals, families)
     print_us14(individuals, families)
     print_us15(families)
+    print_us20(individuals, families)
+    print_us21(individuals, families)
     print_us27(individuals)
     print_us28(individuals, families)
     print_us29(individuals)
